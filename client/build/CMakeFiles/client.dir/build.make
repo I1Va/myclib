@@ -72,10 +72,24 @@ include CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/codegen:
 .PHONY : CMakeFiles/client.dir/codegen
 
+CMakeFiles/client.dir/src/main.c.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/main.c.o: /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c
+CMakeFiles/client.dir/src/main.c.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/client.dir/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/client.dir/src/main.c.o -MF CMakeFiles/client.dir/src/main.c.o.d -o CMakeFiles/client.dir/src/main.c.o -c /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c
+
+CMakeFiles/client.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/client.dir/src/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c > CMakeFiles/client.dir/src/main.c.i
+
+CMakeFiles/client.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/src/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c -o CMakeFiles/client.dir/src/main.c.s
+
 CMakeFiles/client.dir/src/bot.c.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/bot.c.o: /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/bot.c
 CMakeFiles/client.dir/src/bot.c.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/client.dir/src/bot.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/client.dir/src/bot.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/client.dir/src/bot.c.o -MF CMakeFiles/client.dir/src/bot.c.o.d -o CMakeFiles/client.dir/src/bot.c.o -c /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/bot.c
 
 CMakeFiles/client.dir/src/bot.c.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/client.dir/src/bot.c.s: cmake_force
 CMakeFiles/client.dir/src/net.c.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/net.c.o: /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/net.c
 CMakeFiles/client.dir/src/net.c.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/client.dir/src/net.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/client.dir/src/net.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/client.dir/src/net.c.o -MF CMakeFiles/client.dir/src/net.c.o.d -o CMakeFiles/client.dir/src/net.c.o -c /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/net.c
 
 CMakeFiles/client.dir/src/net.c.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/client.dir/src/net.c.s: cmake_force
 CMakeFiles/client.dir/src/protocol.c.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/protocol.c.o: /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/protocol.c
 CMakeFiles/client.dir/src/protocol.c.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/client.dir/src/protocol.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/client.dir/src/protocol.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/client.dir/src/protocol.c.o -MF CMakeFiles/client.dir/src/protocol.c.o.d -o CMakeFiles/client.dir/src/protocol.c.o -c /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/protocol.c
 
 CMakeFiles/client.dir/src/protocol.c.i: cmake_force
@@ -114,36 +128,23 @@ CMakeFiles/client.dir/src/protocol.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/src/protocol.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/protocol.c -o CMakeFiles/client.dir/src/protocol.c.s
 
-CMakeFiles/client.dir/src/main.c.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/src/main.c.o: /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c
-CMakeFiles/client.dir/src/main.c.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/client.dir/src/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/client.dir/src/main.c.o -MF CMakeFiles/client.dir/src/main.c.o.d -o CMakeFiles/client.dir/src/main.c.o -c /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c
-
-CMakeFiles/client.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/client.dir/src/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c > CMakeFiles/client.dir/src/main.c.i
-
-CMakeFiles/client.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/client.dir/src/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/src/main.c -o CMakeFiles/client.dir/src/main.c.s
-
 # Object files for target client
 client_OBJECTS = \
+"CMakeFiles/client.dir/src/main.c.o" \
 "CMakeFiles/client.dir/src/bot.c.o" \
 "CMakeFiles/client.dir/src/net.c.o" \
-"CMakeFiles/client.dir/src/protocol.c.o" \
-"CMakeFiles/client.dir/src/main.c.o"
+"CMakeFiles/client.dir/src/protocol.c.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
 
+client: CMakeFiles/client.dir/src/main.c.o
 client: CMakeFiles/client.dir/src/bot.c.o
 client: CMakeFiles/client.dir/src/net.c.o
 client: CMakeFiles/client.dir/src/protocol.c.o
-client: CMakeFiles/client.dir/src/main.c.o
 client: CMakeFiles/client.dir/build.make
 client: CMakeFiles/client.dir/compiler_depend.ts
+client: myclib/libmyclib.a
 client: CMakeFiles/client.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)

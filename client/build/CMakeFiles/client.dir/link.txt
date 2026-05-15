@@ -1,1 +1,1 @@
-/usr/bin/cc -Wl,--dependency-file=CMakeFiles/client.dir/link.d CMakeFiles/client.dir/src/bot.c.o CMakeFiles/client.dir/src/net.c.o CMakeFiles/client.dir/src/protocol.c.o CMakeFiles/client.dir/src/main.c.o -o client
+/usr/bin/cc -nostdlib -static -Wl,--dependency-file=CMakeFiles/client.dir/link.d CMakeFiles/client.dir/src/main.c.o CMakeFiles/client.dir/src/bot.c.o CMakeFiles/client.dir/src/net.c.o CMakeFiles/client.dir/src/protocol.c.o -o client  myclib/libmyclib.a

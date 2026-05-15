@@ -64,25 +64,47 @@ CMAKE_BINARY_DIR = /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build
 
 # The main recursive "all" target.
 all: CMakeFiles/client.dir/all
+all: myclib/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/client.dir/codegen
+codegen: myclib/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: myclib/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/client.dir/clean
+clean: myclib/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory myclib
+
+# Recursive "all" directory target.
+myclib/all: myclib/CMakeFiles/myclib.dir/all
+.PHONY : myclib/all
+
+# Recursive "codegen" directory target.
+myclib/codegen: myclib/CMakeFiles/myclib.dir/codegen
+.PHONY : myclib/codegen
+
+# Recursive "preinstall" directory target.
+myclib/preinstall:
+.PHONY : myclib/preinstall
+
+# Recursive "clean" directory target.
+myclib/clean: myclib/CMakeFiles/myclib.dir/clean
+.PHONY : myclib/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/client.dir
 
 # All Build rule for target.
-CMakeFiles/client.dir/all:
+CMakeFiles/client.dir/all: myclib/CMakeFiles/myclib.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target client"
@@ -90,7 +112,7 @@ CMakeFiles/client.dir/all:
 
 # Build rule for subdir invocation for target.
 CMakeFiles/client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles 0
 .PHONY : CMakeFiles/client.dir/rule
@@ -109,6 +131,38 @@ CMakeFiles/client.dir/codegen:
 CMakeFiles/client.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/clean
 .PHONY : CMakeFiles/client.dir/clean
+
+#=============================================================================
+# Target rules for target myclib/CMakeFiles/myclib.dir
+
+# All Build rule for target.
+myclib/CMakeFiles/myclib.dir/all:
+	$(MAKE) $(MAKESILENT) -f myclib/CMakeFiles/myclib.dir/build.make myclib/CMakeFiles/myclib.dir/depend
+	$(MAKE) $(MAKESILENT) -f myclib/CMakeFiles/myclib.dir/build.make myclib/CMakeFiles/myclib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=6,7,8,9,10,11,12 "Built target myclib"
+.PHONY : myclib/CMakeFiles/myclib.dir/all
+
+# Build rule for subdir invocation for target.
+myclib/CMakeFiles/myclib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myclib/CMakeFiles/myclib.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles 0
+.PHONY : myclib/CMakeFiles/myclib.dir/rule
+
+# Convenience name for target.
+myclib: myclib/CMakeFiles/myclib.dir/rule
+.PHONY : myclib
+
+# codegen rule for target.
+myclib/CMakeFiles/myclib.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f myclib/CMakeFiles/myclib.dir/build.make myclib/CMakeFiles/myclib.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles --progress-num=6,7,8,9,10,11,12 "Finished codegen for target myclib"
+.PHONY : myclib/CMakeFiles/myclib.dir/codegen
+
+# clean rule for target.
+myclib/CMakeFiles/myclib.dir/clean:
+	$(MAKE) $(MAKESILENT) -f myclib/CMakeFiles/myclib.dir/build.make myclib/CMakeFiles/myclib.dir/clean
+.PHONY : myclib/CMakeFiles/myclib.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

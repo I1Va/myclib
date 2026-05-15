@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/inc
+C_INCLUDES = -I/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/inc -I/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/myclib/inc
 
-C_FLAGS = -std=gnu11 -Wall -Wextra -Wpedantic
+C_FLAGS = -std=gnu11 -ffreestanding -nostdlib -fno-stack-protector -mno-red-zone -fno-builtin -Wall -Wextra -Wpedantic
 

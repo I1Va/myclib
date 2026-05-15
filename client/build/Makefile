@@ -129,6 +129,19 @@ client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
 
+#=============================================================================
+# Target rules for targets named myclib
+
+# Build rule for target.
+myclib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myclib
+.PHONY : myclib
+
+# fast build rule for target.
+myclib/fast:
+	$(MAKE) $(MAKESILENT) -f myclib/CMakeFiles/myclib.dir/build.make myclib/CMakeFiles/myclib.dir/build
+.PHONY : myclib/fast
+
 src/bot.o: src/bot.c.o
 .PHONY : src/bot.o
 
@@ -234,6 +247,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... client"
+	@echo "... myclib"
 	@echo "... src/bot.o"
 	@echo "... src/bot.i"
 	@echo "... src/bot.s"
