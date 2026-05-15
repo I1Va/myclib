@@ -17,5 +17,13 @@ cmake ..
 make
 cd ../..  # back to root
 
-echo "---running client---"
-./client/build/client localhost 3000
+python3 extract_stdlib.py client/build/combined.elf stdlib.bin
+
+# cd -
+
+# # rm ./../back-end/lib/stdlib.bin
+# mv stdlib/stdlib.bin ./../back-end/lib/stdlib.bin
+
+
+# echo "---running client---"
+# ./client/build/client localhost 3000
