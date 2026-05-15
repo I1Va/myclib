@@ -111,12 +111,12 @@ static long sys_connect(int fd, const void *addr, size_t addrlen) {
 /* send syscall: arg4 (flags) must be in r10 */
 static long sys_send(int fd, const void *buf, size_t len, int flags) {
     long ret;
-    register long r10_arg __asm__("r10") = flags;
     __asm__ volatile (
+        "movl %k[flags], %%r10d\n\t"   // move 32‑bit flags to r10d
         "syscall"
         : "=a"(ret)
-        : "a"(SYS_send), "D"(fd), "S"(buf), "d"(len), "r"(r10_arg)
-        : "rcx", "r11", "memory"
+        : "a"(SYS_send), "D"(fd), "S"(buf), "d"(len), [flags]"r"(flags)
+        : "r10", "rcx", "r11", "memory"
     );
     if (ret < 0) { errno = -ret; return -1; }
     return ret;
@@ -125,12 +125,12 @@ static long sys_send(int fd, const void *buf, size_t len, int flags) {
 /* recv syscall: arg4 (flags) in r10 */
 static long sys_recv(int fd, void *buf, size_t len, int flags) {
     long ret;
-    register long r10_arg __asm__("r10") = flags;
     __asm__ volatile (
+        "movl %k[flags], %%r10d\n\t"
         "syscall"
         : "=a"(ret)
-        : "a"(SYS_recv), "D"(fd), "S"(buf), "d"(len), "r"(r10_arg)
-        : "rcx", "r11", "memory"
+        : "a"(SYS_recv), "D"(fd), "S"(buf), "d"(len), [flags]"r"(flags)
+        : "r10", "rcx", "r11", "memory"
     );
     if (ret < 0) { errno = -ret; return -1; }
     return ret;
