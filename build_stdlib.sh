@@ -1,23 +1,15 @@
 #!/bin/bash
 set -e  # exit on error
 
-echo "---building myclib---"
-cd myclib
-mkdir -p build
-cd build
-cmake ..
-make
-cd ../..  # back to root
+echo "---building stdlib.bin---"
 
-echo "---building client---"
-cd client
-mkdir -p build
-cd build
+cd libs
+mkdir -p build && cd build
 cmake ..
-make
-cd ../..  # back to root
+make combined_elf
+cd ./../../.
 
-python3 extract_stdlib.py client/build/combined.elf stdlib.bin
+python3 extract_stdlib.py libs/build/combined.elf stdlib.bin
 
 # cd -
 

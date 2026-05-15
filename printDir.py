@@ -42,7 +42,7 @@ if __name__ == "__main__":
     # -------------------------------
 
     ignore_dirs = {".git", "__pycache__", "node_modules", ".venv", "build"}
-    ignore_exts = {".bin", "makefile", ".exe", ".o", ".out"}
+    ignore_exts = {".bin", "makefile", ".exe", ".o", ".out", ".a"}
 
     if len(sys.argv) < 2:
         print("Usage: python utilite.py <folder1> [folder2 ...]")
