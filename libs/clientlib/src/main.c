@@ -12,18 +12,16 @@
 #include "bot.h"
 #include "net.h"
 
-
-
-int main(int argc, char **argv) {
-    if (argc != 3) {
-        fprintf_stderr("usage: %s HOST PORT\n", argv[0]);
-        return 1;
-    }
+int launch_localhost_client_3000() {
+    // if (argc != 3) {
+    //     fprintf_stderr("usage: %s HOST PORT\n", argv[0]);
+    //     return 1;
+    // }
 
     // seed the random generator
     srand((unsigned int)(time(0) ^ getpid()));
 
-    int fd = connect_tcp(argv[1], argv[2]);
+    int fd = connect_tcp("localhost", "3000");
     if (fd < 0) return 1;
 
     BotState st;

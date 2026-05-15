@@ -8,7 +8,6 @@ add_subdirectory(myclib)
 add_subdirectory(clientlib)
 
 set(MYCLIB_OUTPUT_DIR ${CMAKE_BINARY_DIR}/myclib)
-set(MYCLIB_CRT1       ${MYCLIB_OUTPUT_DIR}/lib/crt1.o)
 set(MYCLIB_LIBRARY    ${MYCLIB_OUTPUT_DIR}/lib/libmyclib.a)
 set(CLIENTLIB_LIBRARY $<TARGET_FILE:clientlib>)
 
@@ -43,11 +42,10 @@ set(COMBINED_ELF ${CMAKE_BINARY_DIR}/combined.elf)
 
 add_custom_command(
     OUTPUT ${COMBINED_ELF}
-    DEPENDS myclib myclib_crt1 clientlib ${MYCLIB_CRT1}
+    DEPENDS myclib clientlib
     COMMAND ${CMAKE_C_COMPILER} -nostdlib -static -T ${LINKER_SCRIPT}
         -Wl,--whole-archive ${MYCLIB_LIBRARY} ${CLIENTLIB_LIBRARY}
         -Wl,--no-whole-archive
-        ${MYCLIB_CRT1}
         -o ${COMBINED_ELF}
     COMMENT "Linking combined.elf"
 )
