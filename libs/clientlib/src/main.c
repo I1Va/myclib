@@ -12,7 +12,12 @@
 #include "bot.h"
 #include "net.h"
 
-int launch_localhost_client_3000() {
+int launch_localhost_client_3000__detail();
+void launch_localhost_client_3000() {
+    launch_localhost_client_3000__detail(); // I want to ignore return value for simplicity
+}
+
+int launch_localhost_client_3000__detail() {
     // if (argc != 3) {
     //     fprintf_stderr("usage: %s HOST PORT\n", argv[0]);
     //     return 1;
