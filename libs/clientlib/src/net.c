@@ -153,10 +153,11 @@ int send_person_hello(int fd, const char *name) {
     if (!name) name = "player";
     size_t name_len = strlen(name);
     if (name_len > 255) name_len = 255;
-    uint8_t payload[256];
+    uint8_t payload[258];                     // 2 bytes length + max 255 name + 1 spare
     uint16_t len = (uint16_t)name_len;
-    wr_u16_le(payload, len);
-    memcpy(payload + 2, name, name_len);
+    wr_u16_le(payload, len);                  // write length (2 bytes)
+    memcpy(payload + 2, name, name_len);      // copy name (max 255 bytes)
+    // total written = 2 + name_len <= 2+255 = 257, fits in 258
     return send_frame(fd, "person", "hello", 0, 0, payload, len + 2);
 }
 

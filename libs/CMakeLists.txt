@@ -16,7 +16,7 @@ set(WRAPPERLIB_LIBRARY ${CMAKE_BINARY_DIR}/wrapperlib/lib/libwrapperlib.a)
 set(DEPENDS_LIST myclib clientlib wrapperlib)
 set(LIBS_LIST 
 ${MYCLIB_LIBRARY} 
-#${CLIENTLIB_LIBRARY} 
+${CLIENTLIB_LIBRARY} 
 ${WRAPPERLIB_LIBRARY}
 )
 
