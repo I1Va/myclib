@@ -2,10 +2,10 @@
 
 #include "bot.h"
 #include "net.h"
-#include "string.h"
+#include "mystring.h"
 #include "stdio.h"
-#include "stdlib.h"
-#include "unistd.h"
+#include "mystdlib.h"
+#include "myunistd.h"
 #include "errno.h"
 #include <stdint.h>
 #include <stddef.h>

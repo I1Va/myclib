@@ -15,3 +15,4 @@ _start:
     mov     rdi, rax            # exit code = return value of main
     mov     rax, 60             # sys_exit
     syscall
+    

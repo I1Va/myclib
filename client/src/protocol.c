@@ -1,7 +1,7 @@
 /* protocol.c - freestanding, uses mini‑libc string functions */
 
 #include "protocol.h"
-#include "string.h"
+#include "mystring.h"
 #include <stdint.h>
 #include <stddef.h>
 

@@ -1,5 +1,5 @@
-#include "stdio.h"
-#include "string.h"
+#include "mystdio.h"
+#include "mystring.h"
 #include <stdarg.h>
 
 #define SYS_write 1

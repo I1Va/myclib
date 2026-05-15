@@ -1,4 +1,4 @@
-#include "stdlib.h"
+#include "mystdlib.h"
 
 static unsigned long rand_state = 1;
 

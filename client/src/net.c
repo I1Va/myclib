@@ -1,5 +1,5 @@
 #include "net.h"
-#include "string.h"
+#include "mystring.h"
 #include "stdio.h"
 #include "errno.h"
 #include <stdint.h>

@@ -1,5 +1,5 @@
-#ifndef _UNISTD_H
-#define _UNISTD_H
+#ifndef _MYUNISTD_H
+#define _MYUNISTD_H
 
 #include <stddef.h>
 

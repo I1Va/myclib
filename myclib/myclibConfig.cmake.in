@@ -1,0 +1,10 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/myclibTargets.cmake")
+
+# Provide a variable pointing to the crt1.o location
+get_target_property(MYCLIB_LIBRARY_DIR myclib LOCATION)
+get_filename_component(MYCLIB_LIBRARY_DIR ${MYCLIB_LIBRARY_DIR} DIRECTORY)
+set(MYCLIB_CRT1 "${MYCLIB_LIBRARY_DIR}/crt1.o")
+
+check_required_components(myclib)

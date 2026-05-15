@@ -1,4 +1,4 @@
-#include "unistd.h"
+#include "myunistd.h"
 
 #define SYS_getpid 39
 #define SYS_time   201

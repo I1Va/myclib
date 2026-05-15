@@ -2,9 +2,9 @@
 
 #include "bot.h"
 #include "net.h"
-#include "string.h"
+#include "mystring.h"
 #include "stdio.h"
-#include "stdlib.h"
+#include "mystdlib.h"
 #include <stdint.h>
 #include <stddef.h>
 

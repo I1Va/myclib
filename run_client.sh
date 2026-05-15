@@ -1,7 +1,17 @@
-cd client
+#!/bin/bash
 
-cmake -B build -S .
-cmake --build build
+echo "---building myclib---"
+cd myclib
+mkdir -p build && cd build
+cmake ..
+make
 cd -
 
-./client/build/client localhost 3000
+
+# cd client
+
+# cmake -B build -S .
+# cmake --build build
+# cd -
+
+# ./client/build/client localhost 3000
