@@ -3,7 +3,7 @@
 #include "bot.h"
 #include "net.h"
 #include "mystring.h"
-#include "stdio.h"
+#include "mystdio.h"
 #include "mystdlib.h"
 #include <stdint.h>
 #include <stddef.h>

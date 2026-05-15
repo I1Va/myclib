@@ -5,41 +5,49 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # -------------------------------------------------------------------
-# Add the myclib subdirectory (static library)
+# Path to myclib (relative to this file)
 # -------------------------------------------------------------------
-add_subdirectory(myclib)
+set(MYCLIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/myclib)
 
 # -------------------------------------------------------------------
-# Client executable sources (application code)
+# Freestanding compilation flags – no libc, no stack protector, no red zone
 # -------------------------------------------------------------------
-set(APP_SOURCES
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffreestanding -nostdlib -fno-stack-protector -mno-red-zone -fno-builtin")
+
+# -------------------------------------------------------------------
+# Include directories – myclib first to override any system headers
+# -------------------------------------------------------------------
+set(INC_DIRS
+    ${MYCLIB_DIR}/include            # myclib headers (errno.h, stdio.h, …)
+    ${CMAKE_CURRENT_SOURCE_DIR}/inc  # application headers (bot.h, net.h, protocol.h)
+)
+
+# -------------------------------------------------------------------
+# Client source files
+# -------------------------------------------------------------------
+set(SOURCES
     src/main.c
     src/bot.c
     src/net.c
     src/protocol.c
 )
 
-add_executable(client ${APP_SOURCES})
+add_executable(client ${SOURCES})
 
 # -------------------------------------------------------------------
-# Link against myclib and use its include directories
+# Add include directories
 # -------------------------------------------------------------------
-target_link_libraries(client PRIVATE myclib)
+target_include_directories(client PRIVATE ${INC_DIRS})
 
 # -------------------------------------------------------------------
-# Compiler flags for the executable (must match freestanding)
+# Link with myclib: first the startup object (crt1.o), then the static library
 # -------------------------------------------------------------------
-target_compile_options(client PRIVATE
-    -ffreestanding -nostdlib -fno-stack-protector -mno-red-zone -fno-builtin
-    -Wall -Wextra -Wpedantic
+target_link_libraries(client
+    ${MYCLIB_DIR}/lib/crt1.o
+    ${MYCLIB_DIR}/lib/libmyclib.a
 )
 
 # -------------------------------------------------------------------
-# Linker flags: do not use any system libc, produce static binary
+# Linker flags – static, no default libraries
 # -------------------------------------------------------------------
 target_link_options(client PRIVATE -nostdlib -static)
-
-# -------------------------------------------------------------------
-# Include directories for application headers (bot.h, net.h, protocol.h)
-# -------------------------------------------------------------------
-target_include_directories(client PRIVATE inc)

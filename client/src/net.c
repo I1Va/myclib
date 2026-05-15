@@ -1,9 +1,12 @@
-#include "net.h"
 #include "mystring.h"
-#include "stdio.h"
-#include "errno.h"
+#include "mystdio.h"
+#include "myerrno.h"
+
 #include <stdint.h>
 #include <stddef.h>
+
+#include "net.h"
+
 
 /* Syscall numbers */
 #define SYS_socket  41

@@ -1,14 +1,18 @@
 /* main.c - freestanding, uses mini‑libc */
 
-#include "bot.h"
-#include "net.h"
 #include "mystring.h"
-#include "stdio.h"
+#include "mystdio.h"
 #include "mystdlib.h"
 #include "myunistd.h"
-#include "errno.h"
+#include "myerrno.h"
+
 #include <stdint.h>
 #include <stddef.h>
+
+#include "bot.h"
+#include "net.h"
+
+
 
 int main(int argc, char **argv) {
     if (argc != 3) {

@@ -5,15 +5,17 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # -------------------------------------------------------------------
-# Freestanding flags for C (no libc, no stack protector, no red zone)
+# Freestanding flags – no libc, no system headers, no stack protector
 # -------------------------------------------------------------------
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffreestanding -nostdlib -fno-stack-protector -mno-red-zone -fno-builtin")
-
-# Assembly flags – keep simple (no -nostdlib)
 set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS}")
 
 # -------------------------------------------------------------------
-# 1. Static library (all C sources)
+# Add our include directory (first, to override any system paths)
+# -------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# Static library (all C sources)
 # -------------------------------------------------------------------
 set(LIB_SOURCES
     src/mystring.c
@@ -27,7 +29,7 @@ add_library(myclib STATIC ${LIB_SOURCES})
 target_include_directories(myclib PRIVATE inc)
 
 # -------------------------------------------------------------------
-# 2. Startup object (crt1.o) from assembly
+# Startup object (crt1.o) from assembly
 # -------------------------------------------------------------------
 set(CRT1_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/startup.s)
 set(CRT1_OBJ ${CMAKE_CURRENT_BINARY_DIR}/crt1.o)
@@ -40,14 +42,37 @@ add_custom_command(
 )
 add_custom_target(myclib_crt1 ALL DEPENDS ${CRT1_OBJ})
 
+# -------------------------------------------------------------------
+# Output directory: ${CMAKE_BINARY_DIR}/myclib/
+# Contains:
+#   include/  (headers)
+#   lib/
+#       libmyclib.a
+#       crt1.o
+# -------------------------------------------------------------------
+set(OUTPUT_DIR ${CMAKE_BINARY_DIR}/myclib)
+set(OUTPUT_INCLUDE ${OUTPUT_DIR}/include)
+set(OUTPUT_LIB ${OUTPUT_DIR}/lib)
 
-# -------------------------------------------------------------------
-# 3. Copy headers to build directory (as "include/")
-# -------------------------------------------------------------------
-set(HEADER_DEST ${CMAKE_CURRENT_BINARY_DIR}/include)
+# Copy headers
 add_custom_command(
     TARGET myclib POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory ${HEADER_DEST}
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/inc ${HEADER_DEST}
-    COMMENT "Copying headers to build/include"
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_INCLUDE}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/inc ${OUTPUT_INCLUDE}
+    COMMENT "Copying headers to ${OUTPUT_INCLUDE}"
+)
+
+# Copy libmyclib.a
+add_custom_command(
+    TARGET myclib POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${OUTPUT_LIB}
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:myclib> ${OUTPUT_LIB}
+    COMMENT "Copying libmyclib.a to ${OUTPUT_LIB}"
+)
+
+# Copy crt1.o
+add_custom_command(
+    TARGET myclib_crt1 POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${CRT1_OBJ} ${OUTPUT_LIB}
+    COMMENT "Copying crt1.o to ${OUTPUT_LIB}"
 )
