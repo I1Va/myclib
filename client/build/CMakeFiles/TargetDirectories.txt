@@ -1,0 +1,3 @@
+/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles/client.dir
+/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles/edit_cache.dir
+/home/iabrutin/Work/Ded/sem4/temp/simple_stdlib/client/build/CMakeFiles/rebuild_cache.dir
