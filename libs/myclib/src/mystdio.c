@@ -61,9 +61,9 @@ void perror(const char *msg) {
 }
 
 #define SYS_write 1
-#define SYS_read 1
+#define SYS_read 0
 #define SYS_exit 60
-void print_V_amd64(int num) {
+void print_num(int num) {
     char buf[16] = {0};
     char *rsi = buf + 15;
     int is_negative = 0;
@@ -101,7 +101,7 @@ void print_V_amd64(int num) {
     );
 }
 
-int scan_V_amd64(void) {
+int scan_num(void) {
     char buf[16] = {0};
     long bytes_read;
 
@@ -144,4 +144,35 @@ int scan_V_amd64(void) {
     }
 
     return result;
+}
+
+const char *scan_str(void) {
+    static char buf[256] = {0};
+    long bytes_read;
+
+    __asm__ __volatile__(
+        "syscall"
+        : "=a"(bytes_read)
+        : "a"(SYS_read), "D"(0), "S"(buf), "d"(sizeof(buf) - 1)
+        : "rcx", "r11", "memory"
+    );
+
+    if (bytes_read <= 0) {
+        buf[0] = '\0';
+        return buf;
+    }
+
+    if (bytes_read >= (long) sizeof(buf)) {
+        bytes_read = sizeof(buf) - 1;
+    }
+
+    buf[bytes_read] = '\0';
+    for (long i = 0; i < bytes_read; i++) {
+        if (buf[i] == '\n' || buf[i] == '\r') {
+            buf[i] = '\0';
+            break;
+        }
+    }
+
+    return buf;
 }
