@@ -3,13 +3,15 @@ set -e  # exit on error
 
 echo "---building stdlib.bin---"
 
-cd libs
+cd stdlib/libs
 mkdir -p build && cd build
 cmake ..
 make combined_elf
 cd ./../../.
 
-python3 extract_stdlib.py libs/build/combined.elf stdlib.bin
+python3 extract_stdlib.py libs/build/combined.elf ../backend/lib/stdlib.bin
+
+cd ..
 
 # cd -
 

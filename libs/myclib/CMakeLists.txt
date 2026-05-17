@@ -9,6 +9,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffreestanding -nostdlib -fno-stack-protecto
 
 # Static library (all C sources)
 set(LIB_SOURCES
+    src/mycmp.c
     src/mystring.c
     src/mystdio.c
     src/mystdlib.c
