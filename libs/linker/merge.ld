@@ -7,10 +7,13 @@ SECTIONS
         *(.text.*)
         *(.rodata)
         *(.rodata.*)
-    }
-    .data : {
+        . = ALIGN(8);
         *(.data)
+        *(.data.*)
+        . = ALIGN(8);
         *(.bss)
+        *(.bss.*)
+        *(COMMON)
     }
     /DISCARD/ : {
         *(.note*)
