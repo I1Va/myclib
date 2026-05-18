@@ -19,6 +19,7 @@ set(MYCLIB_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/../myclib/inc)
 # ------------------------------------------------------------------
 set(CLIENT_SOURCES
     src/bot.c
+    src/lang_pan.c
     src/main.c
     src/net.c
     src/protocol.c

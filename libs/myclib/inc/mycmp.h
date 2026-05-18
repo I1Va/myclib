@@ -7,5 +7,7 @@ int smaller_or_eq(int lhs, int rhs);
 int bigger_or_eq(int lhs, int rhs);
 int equal(int lhs, int rhs);
 int not_equal(int lhs, int rhs);
+int equal64(long lhs, long rhs);
+int not_equal64(long lhs, long rhs);
 
 #endif
