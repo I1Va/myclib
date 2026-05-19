@@ -196,7 +196,7 @@ int lang_attack(const char* prefix, int target)
         return -1;
     }
 
-    if (send_attack(prefix, g_fd, (uint32_t) target) != 0) {
+    if (send_attack(g_fd, (uint32_t) target, prefix) != 0) {
         fprintf_stderr("send attack failed\n");
         g_alive = 0;
         return -1;
@@ -246,5 +246,17 @@ int lang_pan_send_use(const char* prefix, const char* ability, uint32_t target)
     }
 
     fprintf_stderr("send use %s\n", ability);
+    return 0;
+}
+
+int lang_pan_send_bomb(const char* prefix)
+{
+    if (send_bomb(g_fd, prefix) != 0) {
+        fprintf_stderr("send bomb is failed\n");
+        g_alive = 0;
+        return -1;
+    }
+
+    fprintf_stderr("send bomb\n");
     return 0;
 }

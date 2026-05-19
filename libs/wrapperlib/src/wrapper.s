@@ -70,3 +70,4 @@ CDECL_WRAP lang_choose_role_cdecl, lang_choose_role, 1
 CDECL_WRAP lang_pan_prefix_is_cdecl, lang_pan_prefix_is, 1
 CDECL_WRAP lang_pan_type_is_cdecl, lang_pan_type_is, 1
 CDECL_WRAP lang_pan_send_use_cdecl, lang_pan_send_use, 3
+CDECL_WRAP lang_pan_send_bomb_cdecl, lang_pan_send_bomb, 1

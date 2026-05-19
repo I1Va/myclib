@@ -18,5 +18,6 @@ int send_attack(int fd, uint32_t whom, const char* prefix);
 int send_role(int fd, const char *role);
 int read_pan_header(int fd, PanHeader *hdr, int timeout_ms);
 int send_use(int fd, const char* prefix, const char *ability, uint32_t target);
+int send_bomb(int fd, const char* prefix);
 
 #endif

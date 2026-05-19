@@ -241,3 +241,7 @@ int send_use(int fd, const char* prefix, const char *ability, uint32_t target) {
     wr_u32_le(payload + 2 + len, target);
     return send_frame(fd, prefix, "use", 0, 0, payload, sizeof(payload));
 }
+
+int send_bomb(int fd, const char* prefix) {
+    return send_frame(fd, prefix, "bomb", 0, 0, NULL, 0);
+}
