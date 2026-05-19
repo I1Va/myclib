@@ -50,7 +50,7 @@ CDECL_WRAP not_equal_cdecl, not_equal, 2
 CDECL_WRAP equal64_cdecl, equal64, 2
 CDECL_WRAP not_equal64_cdecl, not_equal64, 2
 
-CDECL_WRAP lang_client_connect_cdecl, lang_client_connect, 2
+CDECL_WRAP lang_client_connect_cdecl, lang_client_connect, 3
 CDECL_WRAP lang_client_alive_cdecl, lang_client_alive, 0
 CDECL_WRAP lang_client_set_dead_cdecl, lang_client_set_dead, 0
 CDECL_WRAP lang_client_read_next_cdecl, lang_client_read_next, 0
@@ -60,14 +60,13 @@ CDECL_WRAP lang_pan_type_cdecl, lang_pan_type, 0
 CDECL_WRAP lang_pan_id_cdecl, lang_pan_id, 0
 CDECL_WRAP lang_pan_len_cdecl, lang_pan_len, 0
 CDECL_WRAP lang_pan_flags_cdecl, lang_pan_flags, 0
-CDECL_WRAP lang_pan_const_person_cdecl, lang_pan_const_person, 0
-CDECL_WRAP lang_pan_const_srv_cdecl, lang_pan_const_srv, 0
 CDECL_WRAP lang_pan_payload_i32_cdecl, lang_pan_payload_i32, 1
 CDECL_WRAP lang_pan_payload_u32_cdecl, lang_pan_payload_u32, 1
 CDECL_WRAP lang_pan_payload_bool_cdecl, lang_pan_payload_bool, 1
-CDECL_WRAP lang_person_move_cdecl, lang_person_move, 2
-CDECL_WRAP lang_person_attack_cdecl, lang_person_attack, 1
+CDECL_WRAP lang_move_cdecl, lang_move, 3
+CDECL_WRAP lang_attack_cdecl, lang_attack, 2
 CDECL_WRAP lang_random_mod_cdecl, lang_random_mod, 1
 CDECL_WRAP lang_choose_role_cdecl, lang_choose_role, 1
 CDECL_WRAP lang_pan_prefix_is_cdecl, lang_pan_prefix_is, 1
 CDECL_WRAP lang_pan_type_is_cdecl, lang_pan_type_is, 1
+CDECL_WRAP lang_pan_send_use_cdecl, lang_pan_send_use, 3

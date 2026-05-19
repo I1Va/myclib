@@ -138,18 +138,18 @@ int send_frame(int fd, const char *prefix, const char *type,
     return 0;
 }
 
-int send_person_move(int fd, int8_t dx, int8_t dy) {
+int send_move(int fd, int8_t dx, int8_t dy, const char* prefix) {
     uint8_t payload[2] = {(uint8_t)dx, (uint8_t)dy};
-    return send_frame(fd, "person", "move", 0, 0, payload, sizeof(payload));
+    return send_frame(fd, prefix, "move", 0, 0, payload, sizeof(payload));
 }
 
-int send_person_attack(int fd, uint32_t whom) {
+int send_attack(int fd, uint32_t whom, const char* prefix) {
     uint8_t payload[4];
     wr_u32_le(payload, whom);
-    return send_frame(fd, "person", "attack", 0, 0, payload, sizeof(payload));
+    return send_frame(fd, prefix, "attack", 0, 0, payload, sizeof(payload));
 }
 
-int send_person_hello(int fd, const char *name) {
+int send_hello(int fd, const char *name, const char* prefix) {
     if (!name) name = "player";
     size_t name_len = strlen(name);
     if (name_len > 255) name_len = 255;
@@ -158,10 +158,10 @@ int send_person_hello(int fd, const char *name) {
     wr_u16_le(payload, len);                  // write length (2 bytes)
     memcpy(payload + 2, name, name_len);      // copy name (max 255 bytes)
     // total written = 2 + name_len <= 2+255 = 257, fits in 258
-    return send_frame(fd, "person", "hello", 0, 0, payload, len + 2);
+    return send_frame(fd, prefix, "hello", 0, 0, payload, len + 2);
 }
 
-int connect_tcp(const char *host, const char *port) {
+int connect_tcp(const char *host, const char *port, const char* prefix) {
     int port_num = 0;
     for (const char *p = port; *p; p++) port_num = port_num * 10 + (*p - '0');
 
@@ -195,8 +195,8 @@ int connect_tcp(const char *host, const char *port) {
         sys_close(fd);
         return -1;
     }
-    if (send_person_hello(fd, "player") < 0) {
-        fprintf_stderr("send_person_hello failed, closing\n");
+    if (send_hello(fd, "player", prefix) < 0) {
+        fprintf_stderr("send_hello failed, closing\n");
         sys_close(fd);
         return -1;
     }
@@ -226,4 +226,18 @@ int send_role(int fd, const char *role) {
     wr_u32_le(payload, len);
     memcpy(payload + 2, role, len);
     return send_frame(fd, "role", "choose", 0, 0, payload, sizeof(payload));
+}
+
+int send_use(int fd, const char* prefix, const char *ability, uint32_t target) {
+    uint32_t len = strlen(ability);
+    uint8_t payload[32] = {};
+
+    if (len + 3 > sizeof(payload)) {
+        return 1;
+    }
+
+    wr_u32_le(payload, len);
+    memcpy(payload + 2, ability, len);
+    wr_u32_le(payload + 2 + len, target);
+    return send_frame(fd, prefix, "use", 0, 0, payload, sizeof(payload));
 }

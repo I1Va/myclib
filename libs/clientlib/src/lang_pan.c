@@ -28,11 +28,11 @@ static int64_t pack_name8(const char* name)
     return (int64_t) packed;
 }
 
-int lang_client_connect(const char* ip, const char* port)
+int lang_client_connect(const char* ip, const char* port, const char* prefix)
 {
     srand((unsigned int)(time(0) ^ getpid()));
 
-    g_fd = connect_tcp(ip, port);
+    g_fd = connect_tcp(ip, port, prefix);
     if (g_fd < 0) {
         return 1;
     }
@@ -145,16 +145,6 @@ int lang_pan_flags(void)
     return g_has_message ? (int) g_hdr.flags : 0;
 }
 
-int64_t lang_pan_const_person(void)
-{
-    return pack_name8("person");
-}
-
-int64_t lang_pan_const_srv(void)
-{
-    return pack_name8("srv");
-}
-
 int lang_pan_payload_i32(int offset)
 {
     if (!g_has_message || offset < 0 || offset + 4 > g_hdr.len) {
@@ -182,14 +172,14 @@ int lang_pan_payload_bool(int offset)
     return rd_bool_u8(g_payload + offset);
 }
 
-int lang_person_move(int dx, int dy)
+int lang_move(const char* prefix, int dx, int dy)
 {
     if (g_fd < 0) {
         g_alive = 0;
         return -1;
     }
 
-    if (send_person_move(g_fd, (int8_t) dx, (int8_t) dy) != 0) {
+    if (send_move(g_fd, (int8_t) dx, (int8_t) dy, prefix) != 0) {
         fprintf_stderr("send move failed\n");
         g_alive = 0;
         return -1;
@@ -199,14 +189,14 @@ int lang_person_move(int dx, int dy)
     return 0;
 }
 
-int lang_person_attack(int target)
+int lang_attack(const char* prefix, int target)
 {
     if (g_fd < 0) {
         g_alive = 0;
         return -1;
     }
 
-    if (send_person_attack(g_fd, (uint32_t) target) != 0) {
+    if (send_attack(prefix, g_fd, (uint32_t) target) != 0) {
         fprintf_stderr("send attack failed\n");
         g_alive = 0;
         return -1;
@@ -245,4 +235,16 @@ int lang_choose_role(const char* role)
 
     fprintf_stderr("send role %s\n", role);
 	return 0;
+}
+
+int lang_pan_send_use(const char* prefix, const char* ability, uint32_t target)
+{
+    if (send_use(g_fd, prefix, ability, target) != 0) {
+        fprintf_stderr("send use is failed\n");
+        g_alive = 0;
+        return -1;
+    }
+
+    fprintf_stderr("send use %s\n", ability);
+    return 0;
 }
