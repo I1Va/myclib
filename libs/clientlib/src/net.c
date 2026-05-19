@@ -214,3 +214,16 @@ int read_pan_header(int fd, PanHeader *hdr, int timeout_ms) {
     hdr->flags = rd_u16_le(raw + 22);
     return 0;
 }
+
+int send_role(int fd, const char *role) {
+    uint32_t len = strlen(role);
+    uint8_t payload[32] = {};
+
+    if (len + 3 > sizeof(payload)) {
+        return 1;
+    }
+
+    wr_u32_le(payload, len);
+    memcpy(payload + 2, role, len);
+    return send_frame(fd, "role", "choose", 0, 0, payload, sizeof(payload));
+}

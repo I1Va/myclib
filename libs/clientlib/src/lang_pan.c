@@ -155,66 +155,6 @@ int64_t lang_pan_const_srv(void)
     return pack_name8("srv");
 }
 
-int lang_pan_is_person(void)
-{
-    return g_has_message && strcmp(g_hdr.prefix, "person") == 0;
-}
-
-int lang_pan_is_srv(void)
-{
-    return g_has_message && strcmp(g_hdr.prefix, "srv") == 0;
-}
-
-int lang_pan_type_is_tick(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "tick") == 0;
-}
-
-int lang_pan_type_is_hp(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "hp") == 0;
-}
-
-int lang_pan_type_is_at(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "at") == 0;
-}
-
-int lang_pan_type_is_sees(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "sees") == 0;
-}
-
-int lang_pan_type_is_wall(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "wall") == 0;
-}
-
-int lang_pan_type_is_has_pref(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "hasPref") == 0;
-}
-
-int lang_pan_type_is_name(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "name") == 0;
-}
-
-int lang_pan_type_is_id(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "id") == 0;
-}
-
-int lang_pan_type_is_level(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "level") == 0;
-}
-
-int lang_pan_type_is_r_set_lvl(void)
-{
-    return g_has_message && strcmp(g_hdr.type, "r.setLvl") == 0;
-}
-
 int lang_pan_payload_i32(int offset)
 {
     if (!g_has_message || offset < 0 || offset + 4 > g_hdr.len) {
@@ -283,4 +223,26 @@ int lang_random_mod(int max)
     }
 
     return rand() % max;
+}
+
+int lang_pan_prefix_is(const char* prefix)
+{
+    return g_has_message && strcmp(g_hdr.prefix, prefix) == 0;
+}
+
+int lang_pan_type_is(const char* type)
+{
+    return g_has_message && strcmp(g_hdr.type, type) == 0;
+}
+
+int lang_choose_role(const char* role)
+{
+    if (send_role(g_fd, role) != 0) {
+        fprintf_stderr("send role is failed\n");
+        g_alive = 0;
+        return -1;
+    }
+
+    fprintf_stderr("send role %s\n", role);
+	return 0;
 }

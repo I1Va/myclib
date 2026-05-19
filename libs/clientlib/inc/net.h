@@ -15,6 +15,7 @@ int send_frame(int fd, const char *prefix, const char *type,
                const void *payload, uint16_t payload_len);
 int send_person_move(int fd, int8_t dx, int8_t dy);
 int send_person_attack(int fd, uint32_t whom);
+int send_role(int fd, const char *role);
 int read_pan_header(int fd, PanHeader *hdr, int timeout_ms);
 
 #endif
